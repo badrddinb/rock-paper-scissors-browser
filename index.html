@@ -6,92 +6,12 @@
     <title>Rock Paper Scissors Game</title>
 </head>
 <body>
-    <script>
-        function playerChoice() {
-            let choice = prompt("‘Rock’, ‘Paper’ or ‘Scissors’?", "Rock")
-            if (!choice) return null
-            let playerChoice = choice.toLowerCase().slice(0, 1).toUpperCase() + choice.toLowerCase().slice(1)
-            if (playerChoice === "Rock" || playerChoice === "Paper" || playerChoice === "Scissors") return playerChoice
-            return null
-        }
+    <button class="btn">Rock</button>
+    <button class="btn">Paper</button>
+    <button class="btn">Scissors</button>
 
-        function computerPlay() {
-            let randomOption = Math.floor(Math.random() * 3)
-            switch (randomOption) {
-                case 0:
-                    return "Rock"
-                    break;
-                case 1:
-                    return "Paper"
-                    break;
-                case 2:
-                    return "Scissors"
-                    break;
-                default:
-                    return "Scissors"
-                    break;
-            }
-        }
-        
-        function playRound(playerSelection, computerSelection) {
-            if (playerSelection === "Rock") {
-                if (computerSelection === "Rock") {
-                    return "Draw! Same choice: Rock"
-                } else if (computerSelection === "Paper") {
-                    return "You Lose! Paper beats Rock"
-                } else if (computerSelection === "Scissors") {
-                    return "You Win! Rock beats Scissors"
-                }
-            } else if (playerSelection === "Paper") {
-                if (computerSelection === "Rock") {
-                    return "You Win! Paper beats Rock"
-                } else if (computerSelection === "Paper") {
-                    return "Draw! Same choice: Paper"
-                } else if (computerSelection === "Scissors") {
-                    return "You Lose! Scissors beats Paper"
-                }
-            } else if (playerSelection === "Scissors") {
-                if (computerSelection === "Rock") {
-                    return "You Lose! Rock beats Scissors"
-                } else if (computerSelection === "Paper") {
-                    return "You Win! Scissors beats Paper"
-                } else if (computerSelection === "Scissors") {
-                    return "Draw! Same choice: Scissors"
-                }
-            } else {
-                return "Unvalid value!"
-            }
-        }
+    <div id="display"></div>
 
-        function game() {
-            let playerScore = 0
-            let computerScore = 0
-            for (let i = 0; i < 5; i++) {
-                let player = playerChoice()
-                if (!player) {
-                    console.log("Invalid Data!")
-                    break
-                }
-                let round = playRound(player, computerPlay())
-                if (round.includes("Win")) {
-                    playerScore++
-                } else if (round.includes("Lose")) {
-                    computerScore++
-                }
-                console.log(round, "\nYour Score:", playerScore, "- Computer Score:", computerScore)
-            }
-            if (playerScore === 0 && computerScore === 0) {
-                return "Refresh Page!"
-            } else if (playerScore > computerScore) {
-                return "You Win!"
-            } else if (computerScore > playerScore) {
-                return "You Lose!"
-            } else {
-                return "Draw!"
-            }
-        }
-
-        console.log(game())
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
